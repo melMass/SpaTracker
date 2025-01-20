@@ -41,7 +41,7 @@ class FastCaptureDataset(torch.utils.data.Dataset):
             if i < self.max_seq_len:
                 rgbs.append(imageio.imread(os.path.join(spath, img_path)))
 
-        annot_dict = torch.load(pthpath)
+        annot_dict = torch.load(pthpath,weights_only=True)
         traj_2d = annot_dict["traj_2d"][:, :, : self.max_seq_len]
         visibility = annot_dict["visibility"][:, : self.max_seq_len]
 

@@ -376,7 +376,7 @@ class DPT_DINOv2(nn.Module):
         else:
             self.pretrained = torch.hub.load('facebookresearch/dinov2', 'dinov2_{:}14'.format(encoder))
         
-        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vits14_pretrain.pth")
+        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vits14_pretrain.pth",weights_only=True)
         self.pretrained.load_state_dict(state_dict, strict=True)
         self.pretrained.requires_grad_(False)
         dim = self.pretrained.blocks[0].attn.qkv.in_features
@@ -431,7 +431,7 @@ class CNNandDinov2(nn.Module):
         self.dinov2_vitl14 = torch.hub.load('models/torchhub/facebookresearch_dinov2_main',
                                           'dinov2_{:}14'.format("vitl"), source='local', pretrained=False)
         
-        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vitl14_pretrain.pth")
+        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vitl14_pretrain.pth",weights_only=True)
         self.dinov2_vitl14.load_state_dict(state_dict, strict=True)
 
 
@@ -468,7 +468,7 @@ class Dinov2(nn.Module):
         self.dinov2_vitl14 = torch.hub.load('models/torchhub/facebookresearch_dinov2_main',
                                           'dinov2_{:}14'.format("vitl"), source='local', pretrained=False)
         
-        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vitl14_pretrain.pth")
+        state_dict = torch.load("models/monoD/zoeDepth/ckpts/dinov2_vitl14_pretrain.pth",weights_only=True)
         self.dinov2_vitl14.load_state_dict(state_dict, strict=True)
 
         self.amp = amp

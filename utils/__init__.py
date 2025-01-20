@@ -45,7 +45,7 @@ def load_ckpt(args,
         ckpt_path = args.restore_ckpt
 
     # load the checkpoint
-    ckpt = torch.load(ckpt_path)
+    ckpt = torch.load(ckpt_path,weights_only=True)
     model_paras = model.state_dict()
     if "model" in ckpt:
         if args.fix_backbone == True:
@@ -103,7 +103,7 @@ def load_hier_ckpt(args,
         ckpt_path = args.restore_ckpt
 
     # load the checkpoint
-    ckpt = torch.load(ckpt_path)
+    ckpt = torch.load(ckpt_path,weights_only=True)
     model_paras = model.state_dict()
 
     paras_dict = {k: v for k,v in ckpt.items() if k in model.state_dict()}

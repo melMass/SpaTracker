@@ -35,7 +35,7 @@ def build(config):
                                      out_channels=[256, 512, 1024, 1024],
                                        localhub=args.localhub).cuda()
     depth_anything.load_state_dict(torch.load(args.load_from,
-                                               map_location='cpu'), strict=True)
+                                               map_location='cpu',weights_only=True), strict=True)
     total_params = sum(param.numel() for param in depth_anything.parameters())
     print('Total parameters: {:.2f}M'.format(total_params / 1e6))    
     depth_anything.eval()

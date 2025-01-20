@@ -341,7 +341,7 @@ class MidasCore(nn.Module):
         hubconf = importlib.import_module(f"models.monoD.zoeDepth.midas_c.hubconf")
         midas = getattr(hubconf, midas_model_type)(pretrained=False)
         ckpt_path = "models/monoD/zoeDepth/ckpts/dpt_beit_large_384.pt"
-        midas_ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'))
+        midas_ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'),weights_only=True)
         midas.load_state_dict(midas_ckpt)
         # midas = torch.hub.load("intel-isl/MiDaS", midas_model_type,
         #                        pretrained=use_pretrained_midas, force_reload=force_reload)

@@ -51,7 +51,7 @@ def load_state_dict(model, state_dict):
 
 
 def load_wts(model, checkpoint_path):
-    ckpt = torch.load(checkpoint_path, map_location='cpu')
+    ckpt = torch.load(checkpoint_path, map_location='cpu',weights_only=True)
     return load_state_dict(model, ckpt)
 
 

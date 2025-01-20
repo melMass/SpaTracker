@@ -279,5 +279,5 @@ class DPT_DINOv2(nn.Module):
 
 if __name__ == '__main__':
     depth_anything = DPT_DINOv2()
-    depth_anything.load_state_dict(torch.load('checkpoints/depth_anything_dinov2_vitl14.pth'))
+    depth_anything.load_state_dict(torch.load('checkpoints/depth_anything_dinov2_vitl14.pth',weights_only=True))
     
