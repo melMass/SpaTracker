@@ -109,7 +109,7 @@ else:
 video = F.interpolate(video[0], scale_factor=downsample,
                        mode='bilinear', align_corners=True)[None]
 vidLen = video.shape[1]
-idx = torch.range(0, vidLen-1, args.fps).long()
+idx = torch.arange(0, vidLen-1, args.fps).long()
 video=video[:, idx]
 # save the first image
 img0 = video[0,0].permute(1,2,0).detach().cpu().numpy()

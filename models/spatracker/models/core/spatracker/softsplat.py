@@ -286,7 +286,7 @@ def softsplat(tenIn:torch.Tensor, tenFlow:torch.Tensor,
 
 class softsplat_func(torch.autograd.Function):
     @staticmethod
-    @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+    @torch.amp.custom_fwd(cast_inputs=torch.float32,device_type="cuda")
     def forward(self, tenIn, tenFlow, H=None, W=None):
         if H is None:
             tenOut = tenIn.new_zeros([tenIn.shape[0], tenIn.shape[1], tenIn.shape[2], tenIn.shape[3]])
@@ -368,7 +368,7 @@ class softsplat_func(torch.autograd.Function):
     # end
 
     @staticmethod
-    @torch.cuda.amp.custom_bwd
+    @torch.amp.custom_bwd(device_type="cuda")
     def backward(self, tenOutgrad):
         tenIn, tenFlow = self.saved_tensors
 
