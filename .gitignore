@@ -8,3 +8,6 @@ checkpoints
 **/*/.pt
 **/*/.mp4
 **/*/.npy
+
+models/monoD/zoeDepth/ckpts/*
+!models/monoD/zoeDepth/ckpts/.keep
